@@ -1,7 +1,3 @@
-import fs from "fs";
-import path from "path";
-import { Employee } from "./Employee";
-
 export class BirthdayService {
   constructor(employeeRepository, greetingDelivery) {
     this.employeeRepository = employeeRepository;
