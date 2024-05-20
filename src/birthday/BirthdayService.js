@@ -3,10 +3,13 @@ import path from "path";
 import { Employee } from "./Employee";
 
 export class BirthdayService {
-  constructor() {}
+  constructor(employeeRepository) {
+    this.employeeRepository = employeeRepository;
+  }
 
   sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
-    const employees = this.getEmployeesByBirthDate(ourDate, fileName);
+    //const employees = this.getEmployeesByBirthDate(ourDate, fileName);
+    const employees = this.employeeRepository.getEmployeesByBirthDate(ourDate, fileName);
     
     employees.forEach((employee) => {
       const message = {

@@ -1,4 +1,5 @@
 import { OurDate } from "./OurDate";
+import { FileEmployeesRepository } from "./FileEmployeesRepository";
 import { InMemoryTransport } from "./InMemoryTransport";
 import { BirthdayService } from "./BirthdayService";
 
@@ -8,10 +9,12 @@ describe("Acceptance", () => {
   const FILENAME = "employee_data.txt";
   let birthdayService;
   let transport; // = new InMemoryTransport();
+  let employeeRepository;
 
   beforeEach(() => {
     transport = new InMemoryTransport();
-    birthdayService = new BirthdayService();
+    employeeRepository = new FileEmployeesRepository("employee_data.txt");
+    birthdayService = new BirthdayService(employeeRepository);
   });
 
   it("base scenario", () => {
