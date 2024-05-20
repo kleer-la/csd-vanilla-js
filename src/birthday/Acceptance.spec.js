@@ -20,7 +20,6 @@ describe("Acceptance", () => {
   it("base scenario", () => {
     birthdayService.sendGreetings(
       new OurDate("2008/10/08"),
-      "employee_data.txt",
       SMTP_URL,
       SMTP_PORT,
       transport
@@ -38,7 +37,6 @@ describe("Acceptance", () => {
   it("will not send emails when nobodys birthday", () => {
     birthdayService.sendGreetings(
       new OurDate("2008/01/01"),
-      "employee_data.txt",
       SMTP_URL,
       SMTP_PORT,
       transport
@@ -50,7 +48,6 @@ describe("Acceptance", () => {
   it("uses correct transport", () => {
     birthdayService.sendGreetings(
       new OurDate("2008/10/08"),
-      "employee_data.txt",
       SMTP_URL,
       SMTP_PORT,
       transport
