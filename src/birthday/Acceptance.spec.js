@@ -2,6 +2,7 @@ import { OurDate } from "./OurDate";
 import { FileEmployeesRepository } from "./FileEmployeesRepository";
 import { InMemoryTransport } from "./InMemoryTransport";
 import { BirthdayService } from "./BirthdayService";
+import { SmptGreetingDelivery } from "./SmtpGreetingDelivery";
 
 describe("Acceptance", () => {
   const SMTP_PORT = 25;
@@ -10,11 +11,13 @@ describe("Acceptance", () => {
   let birthdayService;
   let transport; // = new InMemoryTransport();
   let employeeRepository;
+  let greetingDelivery;
 
   beforeEach(() => {
     transport = new InMemoryTransport();
     employeeRepository = new FileEmployeesRepository("employee_data.txt");
-    birthdayService = new BirthdayService(employeeRepository);
+    greetingDelivery = new SmptGreetingDelivery();
+    birthdayService = new BirthdayService(employeeRepository, greetingDelivery);
   });
 
   it("base scenario", () => {
