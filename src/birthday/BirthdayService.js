@@ -12,7 +12,7 @@ export class BirthdayService {
     const employees = this.employeeRepository.getEmployeesByBirthDate(ourDate);
     
     employees.forEach((employee) => {
-      this.greetingDelivery.sendGreetingToEmployee(employee, smtpUrl, smtpPort, transport);
+      this.greetingDelivery.sendGreetingToEmployee(employee);
     });
   }
 }

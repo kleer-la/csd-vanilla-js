@@ -16,17 +16,14 @@ describe("Acceptance", () => {
   beforeEach(() => {
     transport = new InMemoryTransport();
     employeeRepository = new FileEmployeesRepository("employee_data.txt");
-    greetingDelivery = new SmptGreetingDelivery();
+    greetingDelivery = new SmptGreetingDelivery(SMTP_URL,
+      SMTP_PORT,
+      transport);
     birthdayService = new BirthdayService(employeeRepository, greetingDelivery);
   });
 
   it("base scenario", () => {
-    birthdayService.sendGreetings(
-      new OurDate("2008/10/08"),
-      SMTP_URL,
-      SMTP_PORT,
-      transport
-    );
+    birthdayService.sendGreetings(new OurDate("2008/10/08"));
 
     expect(transport.messagesSent.length).toEqual(1);
     const message = transport.messagesSent[0];
@@ -38,23 +35,13 @@ describe("Acceptance", () => {
   });
 
   it("will not send emails when nobodys birthday", () => {
-    birthdayService.sendGreetings(
-      new OurDate("2008/01/01"),
-      SMTP_URL,
-      SMTP_PORT,
-      transport
-    );
+    birthdayService.sendGreetings(new OurDate("2008/01/01"));
 
     expect(transport.messagesSent.length).toEqual(0);
   });
 
   it("uses correct transport", () => {
-    birthdayService.sendGreetings(
-      new OurDate("2008/10/08"),
-      SMTP_URL,
-      SMTP_PORT,
-      transport
-    );
+    birthdayService.sendGreetings(new OurDate("2008/10/08"));
 
     const message = transport.messagesSent[0];
     expect(message.host).toEqual(SMTP_URL);
