@@ -1,13 +1,30 @@
 import fs from "fs";
 import path from "path";
-import { Employee } from "./Employee";
+import { Employee } from "./Employee.js";
 
 export class BirthdayService {
   constructor() {}
 
   sendGreetings(ourDate, fileName, smtpUrl, smtpPort, transport) {
-    const data = fs.readFileSync(
+    /*
+    let __dirname;
+    if (typeof __dirname === 'undefined') {
+      //ESM environment
+      const __filename = fileURLToPath(import.meta.url);
+      __dirname = path.dirname(__filename);
+    } else {
+      // CommonJS environment
+      __dirname = __dirname;
+    }
+    */
+
+    /*const data = fs.readFileSync(
       path.resolve(__dirname, `${fileName}`), //`../${fileName}`),
+      "UTF-8"
+    );*/
+
+    const data = fs.readFileSync(
+      "/workspaces/csd-vanilla-js/src/birthday/" + fileName,
       "UTF-8"
     );
 
