@@ -9,7 +9,7 @@ describe("Acceptance", () => {
   const SMTP_URL = "localhost";
   const FILENAME = "employee_data.txt";
   let birthdayService;
-  let transport; // = new InMemoryTransport();
+  let transport; 
   let employeeRepository;
   let greetingDelivery;
 
