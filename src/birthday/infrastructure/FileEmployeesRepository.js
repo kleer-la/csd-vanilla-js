@@ -25,7 +25,7 @@ export class FileEmployeesRepository {
       //    "UTF-8"
       //  );
         
-      const data = fs.readFileSync("/workspaces/csd-vanilla-js/src/birthday/"+this.fileName, "UTF-8");
+      const data = fs.readFileSync(path.resolve("../csd-vanilla-js/src/birthday", `${this.fileName}`), "UTF-8");
           
       // split the contents by new line
       const lines = data.split(/\r?\n/);
