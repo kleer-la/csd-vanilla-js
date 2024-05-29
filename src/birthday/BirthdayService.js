@@ -23,10 +23,7 @@ export class BirthdayService {
       "UTF-8"
     );*/
 
-    const data = fs.readFileSync(
-      "/workspaces/csd-vanilla-js/src/birthday/" + fileName,
-      "UTF-8"
-    );
+    const data = fs.readFileSync(path.resolve("../csd-vanilla-js/src/birthday", `${fileName}`), "UTF-8");
 
     // split the contents by new line
     const lines = data.split(/\r?\n/);
