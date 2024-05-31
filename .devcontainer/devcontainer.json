@@ -1,45 +1,14 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "codespace",
-      "userUid": "1000",
-      "userGid": "1000"
-    },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20",
-      "additionalVersions": "18"
-    },
-    "ghcr.io/devcontainers/features/sshd:1": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest",
-      "ppa": "false"
-    }
-  },
-  "overrideFeatureInstallOrder": [
-    "ghcr.io/devcontainers/features/common-utils",
-    "ghcr.io/devcontainers/features/git",
-    "ghcr.io/devcontainers/features/node",
-    "ghcr.io/devcontainers/features/sshd"
-  ],
-  "remoteUser": "codespace",
-  "containerUser": "codespace",
+  "name": "Node.js",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
 
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [1234],
 
-  //install project dependecies and library xvfb for cypress
-  //"postCreateCommand": "npm install",
-  //** para actualizar e instalar dependencias para cypress descomentar sgte linea:
-  //"postCreateCommand": "sh .devcontainer/post-create.sh",
-  //"postCreateCommand": {
-  //    "install-dependecies": "npm install",
-  //    "update-system": "sudo apt update",
-  //    "install-xvfb": "sudo apt install xvfb"
-  //},
+  "postCreateCommand": "npm install",
 
-  // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
     "vscode": {
